@@ -1,0 +1,13 @@
+{
+  "name": "syscohada",
+  "version": "1.0.0",
+  "description": "Comptabilité SYSCOHADA/OHADA : plan comptable (878 comptes), imputation, contrôle de balance, résultat, SIG et écritures de clôture.",
+  "author": {
+    "name": "Arnold KOUYA",
+    "email": "arnoldkouya@gmail.com"
+  },
+  "homepage": "https://github.com/arnoldkouya/syscohada-skill",
+  "repository": "https://github.com/arnoldkouya/syscohada-skill",
+  "license": "MIT",
+  "keywords": ["syscohada", "ohada", "comptabilité", "plan-comptable", "clôture", "afrique"]
+}

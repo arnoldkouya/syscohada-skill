@@ -1,0 +1,20 @@
+{
+  "name": "syscohada-skill",
+  "owner": {
+    "name": "Arnold KOUYA",
+    "email": "arnoldkouya@gmail.com"
+  },
+  "metadata": {
+    "description": "Skill SYSCOHADA pour agents IA : plan comptable, balance, clôture."
+  },
+  "plugins": [
+    {
+      "name": "syscohada",
+      "source": "./",
+      "description": "Comptabilité SYSCOHADA/OHADA : plan comptable, imputation, contrôle de balance, SIG et écritures de clôture.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": ["syscohada", "ohada", "comptabilité"]
+    }
+  ]
+}

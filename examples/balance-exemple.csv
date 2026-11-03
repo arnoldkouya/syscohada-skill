@@ -1,0 +1,15 @@
+compte,libelle,debit,credit
+1013,Capital souscrit appelé versé,0,11000000
+2441,Matériel de bureau,8000000,0
+4011,Fournisseurs,0,2000000
+4111,Clients,3500000,0
+4431,TVA facturée sur ventes,0,900000
+4452,TVA récupérable sur achats,300000,0
+521,Banques locales,2500000,0
+571,Caisse siège social,200000,0
+6011,Achats de marchandises dans la région,4000000,0
+6051,Fournitures non stockables - Eau,150000,0
+6411,Impôts fonciers et taxes annexes,100000,0
+6611,Appointements salaires et commissions,1200000,0
+6641,Charges sociales sur rémunération,250000,0
+7011,Ventes de marchandises dans la région,0,6300000
