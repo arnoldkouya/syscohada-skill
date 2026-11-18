@@ -10,6 +10,7 @@ Ce dépôt contient un seul skill, `skills/syscohada/`, au format Agent Skills (
 - Tout code cité dans `references/cloture.md` ou `SKILL.md` doit exister dans `plan-comptable.csv`. Vérifier avec `python3 skills/syscohada/scripts/syscohada.py find CODE`.
 - `scripts/syscohada.py` n'utilise que la bibliothèque standard Python (3.8+). Ne pas ajouter de dépendance.
 - `chatgpt/instructions.md` doit rester sous 8 000 caractères (limite des GPT personnalisés).
+- `README.md` (anglais) et `README.fr.md` (français) disent la même chose : toute modification de l'un se répercute dans l'autre. Même règle pour `chatgpt/README.md` et `chatgpt/README.en.md`.
 
 ## Vérifications avant de livrer
 

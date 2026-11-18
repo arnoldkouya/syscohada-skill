@@ -1,29 +1,33 @@
 # syscohada-skill
 
-Skill pour agents IA dédié à la comptabilité **SYSCOHADA / OHADA** : plan comptable complet, imputation, contrôle de balance, résultat, soldes intermédiaires de gestion et écritures de clôture.
+**English** | [Français](README.fr.md)
 
-Un seul skill, installable sur **Claude** (Claude Code, claude.ai, Desktop), **Codex** et **ChatGPT**, car il suit le format ouvert Agent Skills (un dossier avec un fichier `SKILL.md`).
+AI agent skill for **SYSCOHADA / OHADA** accounting, the accounting system of the OHADA member states (mainly in West and Central Africa): full chart of accounts, entry posting suggestions, trial balance checks, result calculation, intermediate management balances (SIG) and year-end closing entries.
 
-## Ce que fait le skill
+One skill, installable on **Claude** (Claude Code, claude.ai, Desktop), **Codex** and **ChatGPT**, because it follows the open Agent Skills format (a folder with a `SKILL.md` file).
 
-- **Plan comptable** : retrouver, expliquer et valider un compte parmi 878 (classes 1 à 9), avec libellé, niveau, parent, nature, sens et chemin hiérarchique.
-- **Imputation** : proposer l'écriture d'une opération avec débit et crédit équilibrés et une justification par compte.
-- **Validation de lots de codes** : valides, invalides, format incorrect, comptes voisins suggérés, rattachement des auxiliaires de plus de 4 chiffres.
-- **Contrôle de balance** : équilibre, codes inconnus, soldes à contre-sens, comptes d'attente non soldés, résultat provisoire.
-- **Clôture** : soldes intermédiaires de gestion, écritures d'inventaire (amortissements, provisions, stocks, charges à payer, produits à recevoir, régularisations, impôt), bilan, compte de résultat, affectation du résultat.
-- **Exports** du plan en CSV, JSON ou Markdown.
+> **Language note:** the skill's instructions (`SKILL.md`), reference documents and the ChatGPT instructions are written in French, as is the accounting vocabulary of the chart of accounts. This README and the ChatGPT guide are available in English; translating the skill itself is a welcome contribution.
+
+## What the skill does
+
+- **Chart of accounts**: look up, explain and validate any of 878 accounts (classes 1 to 9), with label, level, parent, nature, normal balance side and hierarchical path.
+- **Posting**: suggest the journal entry for a transaction, with balanced debit and credit and a one-line justification per account.
+- **Batch validation of account codes**: valid, invalid, wrong format, nearest accounts suggested, and codes longer than 4 digits attached to their parent in the plan.
+- **Trial balance check**: debit/credit balance, unknown codes, balances on the unusual side, suspense accounts not cleared, provisional result.
+- **Year-end closing**: intermediate management balances (SIG), adjusting entries (depreciation, provisions, inventory, accruals, deferrals, income tax), balance sheet, income statement, appropriation of the result.
+- **Exports** of the chart as CSV, JSON or Markdown.
 
 ## Installation
 
-| Plateforme | Méthode |
+| Platform | Method |
 |---|---|
-| Claude Code | Plugin ou script (voir ci-dessous) |
-| Claude (claude.ai, Desktop) | Importer `dist/syscohada-skill.zip` dans les réglages des skills |
-| Codex | Script d'installation ou copie dans `~/.agents/skills/syscohada` |
-| ChatGPT | Skill (bêta) ou GPT personnalisé : voir [chatgpt/README.md](chatgpt/README.md) |
-| Autre agent compatible Agent Skills | Copier `skills/syscohada/` dans le dossier de skills de l'agent |
+| Claude Code | Plugin or script (see below) |
+| Claude (claude.ai, Desktop) | Import `dist/syscohada-skill.zip` in the skills settings |
+| Codex | Install script, or copy into `~/.agents/skills/syscohada` |
+| ChatGPT | Skill (beta) or custom GPT: see [chatgpt/README.en.md](chatgpt/README.en.md) |
+| Any other Agent Skills compatible agent | Copy `skills/syscohada/` into the agent's skills folder |
 
-### Cloner le dépôt
+### Clone the repository
 
 ```bash
 git clone https://github.com/arnoldkouya/syscohada-skill.git
@@ -32,18 +36,18 @@ cd syscohada-skill
 
 ### Claude Code
 
-Par le plugin :
+With the plugin:
 
 ```text
 /plugin marketplace add arnoldkouya/syscohada-skill
 /plugin install syscohada@syscohada-skill
 ```
 
-Ou par le script, qui copie le skill dans `~/.claude/skills/syscohada` :
+Or with the script, which copies the skill into `~/.claude/skills/syscohada`:
 
 ```bash
-scripts/install.sh claude            # pour tous vos projets
-scripts/install.sh claude --project  # pour le projet courant (.claude/skills)
+scripts/install.sh claude            # for all your projects
+scripts/install.sh claude --project  # for the current project (.claude/skills)
 ```
 
 ### Claude (claude.ai, Desktop)
@@ -52,33 +56,35 @@ scripts/install.sh claude --project  # pour le projet courant (.claude/skills)
 python3 scripts/build_zips.py
 ```
 
-Puis, dans les réglages de Claude, section des capacités ou des skills, importer `dist/syscohada-skill.zip` (le dossier `syscohada/` est à la racine de l'archive). L'intitulé exact du menu varie selon la version de l'application.
+Then, in Claude's settings (capabilities or skills section), import `dist/syscohada-skill.zip` (the `syscohada/` folder sits at the root of the archive). The exact menu name varies with the app version.
 
 ### Codex
 
 ```bash
 scripts/install.sh codex            # ~/.agents/skills/syscohada
-scripts/install.sh codex --project  # .agents/skills du projet courant
+scripts/install.sh codex --project  # .agents/skills of the current project
 ```
 
-Sous Windows, utiliser `scripts\install.ps1 -Target codex` (ou `claude`, `all`, avec `-Project` pour le projet courant). Dans Codex, le skill s'active seul selon la description, ou en le nommant : `$syscohada`.
+On Windows, use `scripts\install.ps1 -Target codex` (or `claude`, `all`, with `-Project` for the current project). In Codex the skill activates on its own based on its description, or by name: `$syscohada`.
 
 ### ChatGPT
 
-Voir [chatgpt/README.md](chatgpt/README.md) : import comme skill (bêta, à activer dans l'espace de travail) ou GPT personnalisé avec `dist/syscohada-gpt-pack.zip`.
+See [chatgpt/README.en.md](chatgpt/README.en.md): import as a skill (beta, to be enabled in the workspace) or a custom GPT with `dist/syscohada-gpt-pack.zip`.
 
-## Exemples de demandes
+## Example requests
 
-- « Quel compte utiliser pour une facture d'électricité ? »
-- « Valide ces codes : 6011 4111 9999 ABCD »
-- « Donne-moi l'arbre du compte 60 sur deux niveaux. »
-- « Voici ma balance, contrôle-la et donne le résultat. »
-- « Prépare les écritures de clôture : amortissements, charges à payer, impôt. »
-- « Exporte la classe 6 en CSV. »
+The skill is written in French; these are English renderings of the kind of request it handles.
 
-## Utiliser le script seul
+- "Which account should I use for an electricity bill?"
+- "Validate these codes: 6011 4111 9999 ABCD"
+- "Show me the tree of account 60, two levels deep."
+- "Here is my trial balance, check it and give me the result."
+- "Prepare the closing entries: depreciation, accruals, income tax."
+- "Export class 6 as CSV."
 
-`skills/syscohada/scripts/syscohada.py` fonctionne sans l'agent (Python 3.8 ou plus, aucune dépendance) :
+## Using the script on its own
+
+`skills/syscohada/scripts/syscohada.py` works without any agent (Python 3.8 or later, no dependencies):
 
 ```bash
 python3 skills/syscohada/scripts/syscohada.py find 6011
@@ -89,40 +95,40 @@ python3 skills/syscohada/scripts/syscohada.py export --format csv --classe 6
 python3 skills/syscohada/scripts/syscohada.py balance examples/balance-exemple.csv
 ```
 
-La balance est un CSV avec les colonnes `compte`, `debit`, `credit` (ou `solde`, positif au débit). Les séparateurs `,`, `;` et tabulation et les nombres au format `1 234,56` ou `1,234.56` sont acceptés. Les lignes de total sont ignorées. Le code de sortie est 1 si la balance est déséquilibrée.
+Account labels are in French, so searches use French terms. A trial balance is a CSV with the columns `compte` (account), `debit`, `credit` (or `solde`, positive on the debit side). The separators `,`, `;` and tab, and numbers written `1 234,56` or `1,234.56`, are accepted. Total rows are ignored. The exit code is 1 when the trial balance does not balance.
 
-## Structure du dépôt
+## Repository layout
 
 ```text
 skills/syscohada/
-├── SKILL.md                    # le skill
+├── SKILL.md                    # the skill
 ├── references/
-│   ├── plan-comptable.csv      # 878 comptes
-│   └── cloture.md              # SIG, écritures d'inventaire, états financiers
-└── scripts/syscohada.py        # recherche, validation, contrôle de balance
-.claude-plugin/                 # manifestes du plugin Claude Code
-chatgpt/                        # instructions et guide pour ChatGPT
+│   ├── plan-comptable.csv      # 878 accounts
+│   └── cloture.md              # SIG, adjusting entries, financial statements
+└── scripts/syscohada.py        # search, validation, trial balance check
+.claude-plugin/                 # Claude Code plugin manifests
+chatgpt/                        # instructions and guide for ChatGPT
 scripts/                        # install.sh, install.ps1, build_zips.py
 examples/balance-exemple.csv
 tests/test_syscohada.py
-AGENTS.md                       # consignes pour les agents qui modifient ce dépôt
+AGENTS.md                       # guidelines for agents that modify this repository
 ```
 
-## Développement
+## Development
 
 ```bash
 python3 -m unittest discover -s tests -v   # tests
-python3 scripts/build_zips.py              # archives dans dist/
+python3 scripts/build_zips.py              # archives in dist/
 ```
 
-## Limites
+## Limitations
 
-- Le plan s'arrête au niveau 4 (4 chiffres). Les comptes plus fins sont propres à chaque entreprise. Quelques comptes du plan officiel peuvent manquer (par exemple 799).
-- Les données viennent de [arnoldkouya/plan-comptable-syscohada](https://github.com/arnoldkouya/plan-comptable-syscohada), une source tierce et non le texte officiel OHADA. Pour une liasse destinée à l'administration ou à un commissaire aux comptes, recouper avec l'Acte uniforme relatif au droit comptable et à l'information financière en vigueur.
-- Les formules de SIG et les modèles d'états financiers sont une trame de travail.
-- Aucun conseil fiscal : les taux et règles varient selon le pays membre.
-- Le résultat est un travail préparatoire qui doit être validé par un expert-comptable.
+- The chart stops at level 4 (4 digits). Finer accounts are specific to each company. A few accounts of the official chart may be missing (for example 799).
+- The data comes from [arnoldkouya/plan-comptable-syscohada](https://github.com/arnoldkouya/plan-comptable-syscohada), a third-party source and not the official OHADA text. For financial statements filed with the tax authorities or reviewed by an auditor, cross-check against the Uniform Act on Accounting Law and Financial Reporting in force.
+- The SIG formulas and the financial statement layouts are a working framework.
+- No tax advice: rates and rules vary by member state.
+- The output is preparatory work and must be validated by a qualified accountant.
 
-## Licence
+## License
 
-MIT, voir [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).
