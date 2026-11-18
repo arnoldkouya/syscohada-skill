@@ -1,0 +1,14 @@
+compte,libelle,debit,credit
+1013,"Capital souscrit, appelé, versé, non amorti",0,8000000
+162,Emprunts et dettes auprès des établissements de crédit,0,6000000
+2451,Matériel automobile,8000000,0
+2845,Amortissements du matériel de transport,0,5000000
+311,Marchandises A,2000000,0
+411,Clients,5000000,0
+4011,Fournisseurs,0,3000000
+521,Banques locales,11400000,0
+701,Ventes de marchandises,0,24000000
+601,Achats de marchandises,12000000,0
+6611,"Appointements, salaires et commissions",5000000,0
+6641,Charges sociales sur rémunération du personnel national,1200000,0
+622,Locations et charges locatives,1400000,0

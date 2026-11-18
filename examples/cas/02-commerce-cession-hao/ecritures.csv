@@ -1,0 +1,14 @@
+compte,libelle,debit,credit
+6031,Variations des stocks de marchandises,2000000,0
+311,Marchandises A,0,2000000
+311,Marchandises A,2600000,0
+6031,Variations des stocks de marchandises,0,2600000
+6813,Dotations aux amortissements des immobilisations corporelles,800000,0
+2845,Amortissements du matériel de transport,0,800000
+2845,Amortissements du matériel de transport,5800000,0
+812,Valeurs comptables des cessions d'immobilisations corporelles,2200000,0
+2451,Matériel automobile,0,8000000
+485,Créances sur cessions d'immobilisations,3500000,0
+822,Produits des cessions d'immobilisations corporelles,0,3500000
+891,Impôts sur les bénéfices de l'exercice,600000,0
+441,"État, impôt sur les bénéfices",0,600000

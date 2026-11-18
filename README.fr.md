@@ -93,6 +93,17 @@ python3 skills/syscohada/scripts/syscohada.py balance examples/balance-exemple.c
 
 La balance est un CSV avec les colonnes `compte`, `debit`, `credit` (ou `solde`, positif au débit). Les séparateurs `,`, `;` et tabulation et les nombres au format `1 234,56` ou `1,234.56` sont acceptés. Les lignes de total sont ignorées. Le code de sortie est 1 si la balance est déséquilibrée.
 
+## Cas de test avec soldes de clôture connus
+
+Deux petites entreprises fictives, avec balance avant clôture, écritures de clôture et résultat attendu calculés à la main, permettent de vérifier le skill avant de lui faire confiance :
+
+```bash
+python3 skills/syscohada/scripts/syscohada.py balance examples/cas/01-societe-de-services/avant.csv --ecritures examples/cas/01-societe-de-services/ecritures.csv
+python3 -m unittest tests.test_cas -v
+```
+
+Détails, et règle de bilan utilisée, dans [examples/cas/README.fr.md](examples/cas/README.fr.md). Les chiffres sont inventés et n'ont pas été relus par un comptable : **si vous l'êtes, je serais ravi que vous les testiez et me fassiez un retour** (issue ou pull request).
+
 ## Structure du dépôt
 
 ```text
@@ -105,8 +116,8 @@ skills/syscohada/
 .claude-plugin/                 # manifestes du plugin Claude Code
 chatgpt/                        # instructions et guide pour ChatGPT
 scripts/                        # install.sh, install.ps1, build_zips.py
-examples/balance-exemple.csv
-tests/test_syscohada.py
+examples/                       # balance-exemple.csv, cas/ (cas de test)
+tests/test_syscohada.py, tests/test_cas.py
 AGENTS.md                       # consignes pour les agents qui modifient ce dépôt
 ```
 

@@ -1,0 +1,16 @@
+compte,libelle,debit,credit
+1013,"Capital souscrit, appelé, versé, non amorti",0,5000000
+121,Report à nouveau créditeur,0,1000000
+2442,Matériel informatique,3000000,0
+411,Clients,4500000,0
+4011,Fournisseurs,0,1200000
+521,Banques locales,7060000,0
+4452,T.V.A. récupérable sur achats,150000,0
+4432,T.V.A. facturée sur prestations de services,0,810000
+462,"Associés, comptes courants",0,1640000
+706,Services vendus,0,15000000
+6611,"Appointements, salaires et commissions",6000000,0
+6641,Charges sociales sur rémunération du personnel national,1500000,0
+622,Locations et charges locatives,1800000,0
+6251,Assurances multirisques,240000,0
+632,Rémunérations d'intermédiaires et de conseils,400000,0

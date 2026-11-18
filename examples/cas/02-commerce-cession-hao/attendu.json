@@ -1,0 +1,32 @@
+{
+  "cas": "Commerce : variation de stock, cession d'un véhicule (H.A.O.), amortissement, impôt",
+  "avertissement": "Chiffres fictifs calculés à la main. À faire relire par un comptable.",
+  "total_debit_apres": 63500000,
+  "total_credit_apres": 63500000,
+  "charges_classe6": 19800000,
+  "produits_classe7": 24000000,
+  "resultat": 4900000,
+  "total_actif_net": 22500000,
+  "total_passif_avec_resultat": 22500000,
+  "soldes_apres": {
+    "1013": -8000000,
+    "162": -6000000,
+    "311": 2600000,
+    "4011": -3000000,
+    "411": 5000000,
+    "441": -600000,
+    "485": 3500000,
+    "521": 11400000,
+    "601": 12000000,
+    "6031": -600000,
+    "622": 1400000,
+    "6611": 5000000,
+    "6641": 1200000,
+    "6813": 800000,
+    "701": -24000000,
+    "812": 2200000,
+    "822": -3500000,
+    "891": 600000
+  },
+  "net_classe8": 700000
+}
