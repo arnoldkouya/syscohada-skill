@@ -304,6 +304,14 @@ def money(value: float) -> str:
 
 def cmd_balance(args, plan):
     entries, ignored = read_balance(Path(args.fichier))
+    if args.ecritures:
+        # Écritures de clôture : mêmes colonnes que la balance, ajoutées compte par compte.
+        extra, extra_ignored = read_balance(Path(args.ecritures))
+        for code, (debit, credit) in extra.items():
+            slot = entries.setdefault(code, [0.0, 0.0])
+            slot[0] += debit
+            slot[1] += credit
+        ignored = ignored + extra_ignored
     total_d = sum(d for d, _ in entries.values())
     total_c = sum(c for _, c in entries.values())
     gap = round(total_d - total_c, 2)
@@ -438,6 +446,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("balance", help="Contrôler une balance (CSV) et calculer le résultat")
     p.add_argument("fichier")
     p.add_argument("--json", action="store_true")
+    p.add_argument("--ecritures", help="CSV d'écritures de clôture (mêmes colonnes que la balance) à ajouter avant le contrôle")
     p.set_defaults(func=cmd_balance)
     return parser
 

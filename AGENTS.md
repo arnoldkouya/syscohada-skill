@@ -11,6 +11,7 @@ Ce dépôt contient un seul skill, `skills/syscohada/`, au format Agent Skills (
 - `scripts/syscohada.py` n'utilise que la bibliothèque standard Python (3.8+). Ne pas ajouter de dépendance.
 - `chatgpt/instructions.md` doit rester sous 8 000 caractères (limite des GPT personnalisés).
 - `README.md` (anglais) et `README.fr.md` (français) disent la même chose : toute modification de l'un se répercute dans l'autre. Même règle pour `chatgpt/README.md` et `chatgpt/README.en.md`.
+- Chaque cas de `examples/cas/` doit rester équilibré, n'utiliser que des codes présents dans le plan, et avoir un `attendu.json` cohérent avec `avant.csv` + `ecritures.csv` (vérifié par `tests/test_cas.py`). Les chiffres sont fictifs ; ne jamais présenter un cas comme relu par un comptable tant que ce n'est pas vrai.
 
 ## Vérifications avant de livrer
 
